@@ -1,5 +1,5 @@
 <template>
-  <div ref="treeNode">
+  <div ref="treeNode" class="d3-tree">
   </div>
 </template>
 
@@ -25,7 +25,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss' rel="stylesheet/scss" type="text/scss">
-  #treeNode {
+  .d3-tree {
     width: 100%;
     height: 100%;
 
@@ -60,5 +60,22 @@
       }
 
     }
+
+    .link {
+      fill: none;
+      stroke: #ccc;
+      stroke-width: 1.5px;
+    }
+
+    .node circle {
+      fill: #fff;
+      stroke: steelblue;
+      stroke-width: 1.5px;
+    }
+
+    .node {
+      font: 12px sans-serif;
+    }
+
   }
 </style>

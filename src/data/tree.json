@@ -82,6 +82,25 @@
           "name": "哈密"
         }
       ]
+    },
+    {
+      "name": "test",
+      "children": [
+        {
+          "name": "test_deep_1",
+          "children": [
+            {
+              "name": "test_deep_2",
+              "children": [
+                {
+                  "name": "test_deep_3"
+                }
+              ]
+            }
+
+          ]
+        }
+      ]
     }
   ]
 }

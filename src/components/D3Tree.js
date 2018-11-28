@@ -3,7 +3,7 @@ import * as d3 from 'd3'
 
 export default class D3Tree {
   constructor(el) {
-    this.width  = 400;
+    this.width  = 600;
     this.height = 400;
 
     this.svg = d3.select(el)
@@ -13,9 +13,9 @@ export default class D3Tree {
 
     // 初始化树状图数据获取器
     this.tree = d3.tree()
-      .size([this.width, this.height - 80])
-      .separation(function (a, b) {
-        return (a.parent === b.parent ? 1 : 2) / a.depth
+      .size([this.width - 200, this.height - 200])
+      .separation(function (a, b) { // 设置节点之间的间距
+        return (a.parent === b.parent ? 1 : 2) * a.depth
       });
   }
 
@@ -29,37 +29,49 @@ export default class D3Tree {
     // 初始化树状图
     let treeData = this.tree(hierarchyData);
     // 获取节点
-    let nodes = treeData.descendants();
+    let nodes    = treeData.descendants();
     // 获取连线
-    let links = treeData.links();
+    let links    = treeData.links();
+
+    console.log('treeData', treeData);
+    console.log('nodes', nodes);
+    console.log('links', links);
+
     // 绘制线
-    let g = this.svg.append('g').attr('transform', 'translate(40, 0)');
+    let g = this.svg.append('g').attr('transform', 'translate(40, 40)');
     g.selectAll('.link')
       .data(links)
       .enter().append('path')
       .attr('class', 'link')
-      .style('fill', '#ccc')
-      .attr('d', d3.linkHorizontal()
-        .x(d => d.y)
-        .y(d => d.x));
+      .attr('d', d3.linkVertical()
+        .x(d => d.x)
+        .y(d => d.y));
 
-    // 绘制文本和节点
+    // 创建节点
     g.selectAll('.node')
       .data(nodes)
       .enter().append('g')
       .attr('class', function (d) {
-        return 'node' + (d.children ? 'node--internal': 'node--left')
+        return 'node' + (d.children ? ' node--internal' : ' node--leaf')
       })
       .attr('transform', function (d) {
-        return `translate(${d.y}, ${d.x})`;
+        return `translate(${d.x}, ${d.y})`;
       });
+
+    // 绘制节点
     g.selectAll('.node').append('circle')
       .attr('r', 5)
-      .style('fill', 'green');
+      .style('fill', function (d) {
+        return ['#b7ff6b', '#ffd000', '#6c9aff', '#ff8095'][d.depth % 4];
+      });
+
+    // 绘制文字
     g.selectAll('.node').append('text')
-      .attr('dy', 3)
+      .attr('dy', function (d) {
+        return d.children ? 3 : 20;
+      })
       .attr('x', function (d) {
-        return d.children ? -8 : 8;
+        return d.children ? -8 : -15;
       })
       .style('text-anchor', function (d) {
         return d.children ? 'end' : 'start';
