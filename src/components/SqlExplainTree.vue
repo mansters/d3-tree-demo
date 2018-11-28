@@ -29,38 +29,6 @@
     width: 100%;
     height: 100%;
 
-    .every {
-      width: 400px;
-      height: 425px;
-      margin: 15px;
-      float: left;
-
-      h3 {
-        margin: 0;
-
-        .button {
-          float: right;
-          margin-right: 20px;
-          font-size: 14px;
-          cursor: pointer;
-          padding: 2px 8px;
-          border: 1px solid #ccc;
-          background: yellowgreen;
-          border-radius: 4px;
-
-          &:hover {
-            background: violet;
-          }
-
-        }
-      }
-      .svg {
-        width: 400px;
-        height: 400px;
-      }
-
-    }
-
     .link {
       fill: none;
       stroke: #ccc;
@@ -77,5 +45,25 @@
       font: 12px sans-serif;
     }
 
+    .tree-node__title {
+      $title-width: 80px;
+      $title-height: 40px;
+      background: #6cc7fe;
+      border-radius: 5px;
+      border: 1px solid lightgrey;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      width: $title-width;
+      height: $title-height;
+      text-align: center;
+      transform: translate(-$title-width / 2, -$title-height / 2);
+
+      h1 {
+        font-size: 12px;
+        margin: 0;
+      }
+    }
   }
 </style>

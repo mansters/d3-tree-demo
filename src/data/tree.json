@@ -9,12 +9,6 @@
         },
         {
           "name": "宁波"
-        },
-        {
-          "name": "温州"
-        },
-        {
-          "name": "绍兴"
         }
       ]
     },
@@ -28,79 +22,116 @@
               "name": "秀峰区"
             },
             {
-              "name": "叠彩区"
-            },
-            {
-              "name": "象山区"
-            },
-            {
-              "name": "七星区"
+              "name": "叠彩区",
+              "children": [
+                {
+                  "name": "test_node_1",
+                  "children": [
+                    {
+                      "name": "test_node_11",
+                      "children": [
+                        {
+                          "name": "test_node_111",
+                          "children": [
+                            {
+                              "name": "test_node_1111",
+                              "children": [
+                                {
+                                  "name": "test_node_11111"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "test_node_1111",
+                              "children": [
+                                {
+                                  "name": "test_node_11111"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "test_node_111",
+                          "children": [
+                            {
+                              "name": "test_node_1111",
+                              "children": [
+                                {
+                                  "name": "test_node_11111"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "test_node_1111",
+                              "children": [
+                                {
+                                  "name": "test_node_11111"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "test_node_11",
+                      "children": [
+                        {
+                          "name": "test_node_111",
+                          "children": [
+                            {
+                              "name": "test_node_1111",
+                              "children": [
+                                {
+                                  "name": "test_node_11111"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "test_node_1111",
+                              "children": [
+                                {
+                                  "name": "test_node_11111"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "name": "test_node_111",
+                          "children": [
+                            {
+                              "name": "test_node_1111",
+                              "children": [
+                                {
+                                  "name": "test_node_11111"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "test_node_1111",
+                              "children": [
+                                {
+                                  "name": "test_node_11111"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
             }
           ]
         },
         {
           "name": "南宁"
-        },
-        {
-          "name": "柳州"
-        },
-        {
-          "name": "防城港"
-        }
-      ]
-    },
-    {
-      "name": "黑龙江",
-      "children": [
-        {
-          "name": "哈尔滨"
-        },
-        {
-          "name": "齐齐哈尔"
-        },
-        {
-          "name": "牡丹江"
-        },
-        {
-          "name": "大庆"
-        }
-      ]
-    },
-    {
-      "name": "新疆",
-      "children": [
-        {
-          "name": "乌鲁木齐"
-        },
-        {
-          "name": "克拉玛依"
-        },
-        {
-          "name": "吐鲁番"
-        },
-        {
-          "name": "哈密"
-        }
-      ]
-    },
-    {
-      "name": "test",
-      "children": [
-        {
-          "name": "test_deep_1",
-          "children": [
-            {
-              "name": "test_deep_2",
-              "children": [
-                {
-                  "name": "test_deep_3"
-                }
-              ]
-            }
-
-          ]
         }
       ]
     }
+
   ]
 }

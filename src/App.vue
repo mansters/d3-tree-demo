@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <HelloWorld/>
+    <SqlExplainTree/>
   </div>
 </template>
 
 <script>
-  import HelloWorld from './components/HelloWorld'
+  import SqlExplainTree from './components/SqlExplainTree'
 
 
   export default {
     name      : 'App',
     components: {
-      HelloWorld
+      SqlExplainTree
     }
   }
 </script>

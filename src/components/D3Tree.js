@@ -3,8 +3,8 @@ import * as d3 from 'd3'
 
 export default class D3Tree {
   constructor(el) {
-    this.width  = 600;
-    this.height = 400;
+    this.width  = 800;
+    this.height = 800;
 
     this.svg = d3.select(el)
       .append('svg')
@@ -13,10 +13,10 @@ export default class D3Tree {
 
     // 初始化树状图数据获取器
     this.tree = d3.tree()
-      .size([this.width - 200, this.height - 200])
-      .separation(function (a, b) { // 设置节点之间的间距
-        return (a.parent === b.parent ? 1 : 2) * a.depth
-      });
+      .size([this.width - 100, this.height - 200])
+      // .separation(function (a, b) { // 设置节点之间的间距
+      //   return (a.parent === b.parent ? 2 : 1) / a.depth
+      // });
   }
 
   draw(data) {
@@ -58,27 +58,13 @@ export default class D3Tree {
         return `translate(${d.x}, ${d.y})`;
       });
 
-    // 绘制节点
-    g.selectAll('.node').append('circle')
-      .attr('r', 5)
-      .style('fill', function (d) {
-        return ['#b7ff6b', '#ffd000', '#6c9aff', '#ff8095'][d.depth % 4];
+    // 创建标题框
+    g.selectAll(('.node')).append('foreignObject')
+      .append(function (d, index, group) {
+        const div = document.createElement('div');
+        div.setAttribute('class', 'tree-node__title');
+        div.innerHTML = `<h1>${d.data.name}</h1>`;
+        return div;
       });
-
-    // 绘制文字
-    g.selectAll('.node').append('text')
-      .attr('dy', function (d) {
-        return d.children ? 3 : 20;
-      })
-      .attr('x', function (d) {
-        return d.children ? -8 : -15;
-      })
-      .style('text-anchor', function (d) {
-        return d.children ? 'end' : 'start';
-      })
-      .text(function (d) {
-        return d.data.name
-      })
-      .style('font-size', '11px');
   }
 }
