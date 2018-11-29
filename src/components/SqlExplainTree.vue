@@ -7,14 +7,16 @@
   import D3Tree   from './D3Tree';
   import treeJson from '../data/tree.json';
 
+  import D3TreeCollapsible from './D3TreeCollapsible';
+
 
   export default {
     name: 'HelloWorld',
     mounted() {
       this.$nextTick(function () {
-        const d3Tree = new D3Tree(this.$refs.treeNode);
+        const d3TreeCollapsible = new D3TreeCollapsible(this.$refs.treeNode);
         console.log(treeJson);
-        d3Tree.draw(treeJson);
+        d3TreeCollapsible.draw(treeJson);
       });
     },
     data() {

@@ -14,9 +14,9 @@ export default class D3Tree {
     // 初始化树状图数据获取器
     this.tree = d3.tree()
       .size([this.width - 100, this.height - 200])
-      // .separation(function (a, b) { // 设置节点之间的间距
-      //   return (a.parent === b.parent ? 2 : 1) / a.depth
-      // });
+    // .separation(function (a, b) { // 设置节点之间的间距
+    //   return (a.parent === b.parent ? 2 : 1) / a.depth
+    // });
   }
 
   draw(data) {
