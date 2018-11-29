@@ -13,7 +13,6 @@
     mounted() {
       this.$nextTick(function () {
         const d3Tree = new D3Tree(this.$refs.treeNode);
-        console.log(treeJson);
         d3Tree.draw(treeJson);
       });
     },
@@ -48,12 +47,18 @@
     .tree-node__title {
       $title-width: 80px;
       $title-height: 40px;
-      background: #6cc7fe;
+      background: lightgrey;
+      color: #fff;
       border-radius: 5px;
-      border: 1px solid lightgrey;
+      border: 1px solid #DCDFE6;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      &.primary {background: #409EFF;}
+      &.success {background: #67C23A;}
+      &.warning {background: #E6A23C;}
+      &.danger {background: #F56C6C;}
 
       width: $title-width;
       height: $title-height;
@@ -63,6 +68,8 @@
       h1 {
         font-size: 12px;
         margin: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
   }
