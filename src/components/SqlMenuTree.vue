@@ -26,6 +26,21 @@
     width: 100%;
     height: 100%;
 
+    .node-title {
+      display: flex;
+      font-size: 12px;
+      align-items: center;
+
+      i {
+        margin-left: 5px;
+        transform: scale(0.6);
+      }
+
+      .node-title-text {
+        margin-left: 20px;
+      }
+    }
+
     .node rect {
       cursor: pointer;
       fill: #fff;

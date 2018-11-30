@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="layout-item">
-      <SqlExplainTree/>
+      <SqlMenuTree/>
     </div>
     <div class="layout-item"></div>
 
