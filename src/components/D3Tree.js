@@ -16,9 +16,9 @@ const TITLE_COLOR_CLASS = [
 
 export default class D3Tree {
   constructor(el) {
-    this.$el = el;
+    this.$el    = el;
     const style = getComputedStyle(this.$el);
-    this.width = parseFloat(style.width);
+    this.width  = parseFloat(style.width);
     this.height = parseFloat(style.height);
 
     // this.svg = d3.select(this.$el)
@@ -74,21 +74,32 @@ export default class D3Tree {
     }
 
     // 根节点高度即为深度
-    const viewPortWidthHalf  = Math.pow(2, Math.max(depth + 1, 1)) * nodeSize.width,
-          viewPortHeightHalf = depth * nodeSize.height;
+    const viewPortWidth  = 4 * nodeSize.width,
+          viewPortHeight = 8 * nodeSize.height;
 
 
-    this.svg.transition()
-      .duration(duration)
+    this.svg
       .attr("viewBox", [
-        -margin.left - viewPortWidthHalf / 2,
+        -margin.left - viewPortWidth / 2,
         -margin.top,
-        viewPortWidthHalf + margin.right,
-        viewPortHeightHalf + margin.bottom
+        viewPortWidth + margin.right,
+        viewPortHeight + margin.bottom
       ]);
 
-    // 绘制线
+
     let g = this.svg.append('g').attr('transform', 'translate(40, 40)');
+
+    // 树状图缩放功能
+    this.zoom = d3.zoom()
+      .on('zoom', () => {
+        const t = d3.zoomTransform(this.svg.node());
+        g.attr("transform", t.scale(t.k));
+      });
+
+    this.svg.call(this.zoom);
+
+    // 绘制线
+
     g.selectAll('.link')
       .data(links)
       .enter().append('path')
