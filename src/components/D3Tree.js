@@ -48,6 +48,7 @@ export default class D3Tree {
   $_draw() {
     const ctx = this;
 
+    console.log(this.svg);
     // 删除当前树
     this.svg && this.svg.remove();
     this.svg = d3.select(this.$el)
@@ -86,21 +87,24 @@ export default class D3Tree {
         viewPortHeight + margin.bottom
       ]);
 
-
-    let g = this.svg.append('g').attr('transform', 'translate(40, 40)');
+    if (this.g) {
+      this.g = this.svg.append('g').attr('transform', this.g.attr('transform'))
+    } else {
+      this.g = this.svg.append('g').attr('transform', 'translate(40, 40)');
+    }
 
     // 树状图缩放功能
     this.zoom = d3.zoom()
       .on('zoom', () => {
         const t = d3.zoomTransform(this.svg.node());
-        g.attr("transform", t.scale(t.k));
+        this.g.attr("transform", t.scale(t.k));
       });
 
     this.svg.call(this.zoom);
 
     // 绘制线
 
-    g.selectAll('.link')
+    this.g.selectAll('.link')
       .data(links)
       .enter().append('path')
       .attr('class', 'link')
@@ -109,7 +113,7 @@ export default class D3Tree {
         .y(d => d.y));
 
     // 创建节点
-    g.selectAll('.node')
+    this.g.selectAll('.node')
       .data(nodes)
       .enter().append('g')
       .attr('class', function (d) {
@@ -132,7 +136,7 @@ export default class D3Tree {
       });
 
     // 创建标题框
-    g.selectAll(('.node')).append('foreignObject')
+    this.g.selectAll(('.node')).append('foreignObject')
       .append(function (d, index, group) {
         const div = document.createElement('div');
         div.setAttribute('class', `tree-node__title ${TITLE_COLOR_CLASS[d.depth % 4]}`);
