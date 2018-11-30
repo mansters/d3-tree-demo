@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <div class="layout-item">
-      <SqlExplainTree/>
+      <SqlExplainTree />
     </div>
-    <div class="layout-item"></div>
+    <div class="layout-item">
+      <SqlMenuTree />
+    </div>
 
   </div>
 </template>

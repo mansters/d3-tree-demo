@@ -34,6 +34,7 @@
       i {
         margin-left: 5px;
         transform: scale(0.6);
+        cursor: pointer;
       }
 
       .node-title-text {
